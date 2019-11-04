@@ -3,9 +3,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=127.0.0.1;dbname=advanced',
-            'username' => 'root',
-            'password' => '',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=db_surfect',
+            'username' => 'users_surfect',
+            'password' => 'surfect123',
             'charset' => 'utf8',
         ],
         'mailer' => [
