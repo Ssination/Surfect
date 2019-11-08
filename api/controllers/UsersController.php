@@ -56,6 +56,8 @@ class UsersController extends Controller
 
 
     public function actionRegistation(){
+        
+
        /* $response = array();
         $newuser = new User;
 
