@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient2"
+    tools:context=".MainActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"/>
+
+    <LinearLayout
+        android:id="@+id/Slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewPager"
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.321" />
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="425dp"
+        android:layout_marginTop="100dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.897">
+
+        <ImageView
+            android:id="@+id/imgIcon"
+            android:layout_width="match_parent"
+            android:layout_height="73dp"
+            app:srcCompat="@drawable/circleicon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="136dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvBemVindo"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:fontFamily="@font/doppio_one"
+                android:lineSpacingExtra="8sp"
+                android:text="@string/tvBemVindo"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="30sp" />
+
+            <ImageView
+                android:id="@+id/imgName"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                app:srcCompat="@drawable/name" />
+
+            <ImageView
+                android:id="@+id/imgSlogan"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                app:srcCompat="@drawable/slogan" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="198dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvContaSim"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:fontFamily="@font/doppio_one"
+                android:gravity="center"
+                android:text="@string/tvEntrar"
+                android:textColor="@android:color/white"
+                android:textSize="11dp" />
+
+            <Button
+                android:id="@+id/btEntrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/doppio_one"
+                android:text="@string/btEntrar"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tvContaNao"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:fontFamily="@font/doppio_one"
+                android:gravity="center"
+                android:text="@string/tvRegistar"
+                android:textColor="@android:color/white"
+                android:textSize="11dp" />
+
+            <Button
+                android:id="@+id/btRegistar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@color/colorAccent"
+                android:fontFamily="@font/doppio_one"
+                android:text="@string/btRegisto"
+                android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

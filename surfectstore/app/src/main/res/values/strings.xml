@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">SURFECT</string>
+    <string name="tvSplashScreen">POWERED BY</string>
+    <string name="hintEmail">* Email</string>
+    <string name="hintPassword">* Password</string>
+    <string name="btRegisto">REGISTE-SE!</string>
+    <string name="tvOpcao">- OU -</string>
+    <string name="tvLogin">Já é membro? Entre!</string>
+    <string name="tvBemVindo">BEM-VINDO À</string>
+    <string name="tvRegisto">Crie aqui a sua conta.</string>
+    <string name="etPrimeiroNome">* Primeiro nome</string>
+    <string name="etUltimoNome">* Último nome</string>
+    <string name="etEmail">* Email</string>
+    <string name="etPassword">* Password</string>
+    <string name="etTelemovel">" * Número de Telemóvel"</string>
+    <string name="tvMinusculas">a-z</string>
+    <string name="tvMaiusculas">A-Z</string>
+    <string name="tvNumeros">0-9</string>
+    <string name="tvCaracteres">8 caractéres</string>
+    <string name="Masculino">Masculino</string>
+    <string name="Feminino">Feminino</string>
+    <string name="tvEntrar">Já tem conta?</string>
+    <string name="btEntrar">ENTRE!</string>
+    <string name="tvRegistar">Se não tiver conta, crie já a sua!</string>
+    <string name="etDataNascimento">* Data de Nascimento</string>
+    <string name="tvObrigatorio">* Campos de preenchimento obrigatório.</string>
+    <string name="tvGenero">* Género:</string>
+    <string name="tvAceder">Faça Login para aceder.</string>
+    <string name="etLoginEmail">Email</string>
+    <string name="etLoginPassword" >Password</string>
+    <string name="tvNovaPassword">Esqueceu-se da sua password?</string>
+    <string name="tvContaNao">Não tem conta? Crie já a sua!</string>
+    <string name="swLembrar">Lembrar?</string>
+</resources>
