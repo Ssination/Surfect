@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 04-Nov-2019 às 12:18
--- Versão do servidor: 10.4.8-MariaDB
--- versão do PHP: 7.3.10
+-- Generation Time: 14-Nov-2019 às 12:55
+-- Versão do servidor: 10.1.38-MariaDB
+-- versão do PHP: 7.2.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `db_surfect`
+-- Database: `db_surfect`
 --
 
 -- --------------------------------------------------------
@@ -237,6 +237,26 @@ INSERT INTO `countries` (`country_id`, `name_portuguese`, `name_english`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `migration`
+--
+
+CREATE TABLE `migration` (
+  `version` varchar(180) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `migration`
+--
+
+INSERT INTO `migration` (`version`, `apply_time`) VALUES
+('m000000_000000_base', 1572945901),
+('m130524_201442_init', 1572945903),
+('m190124_110200_add_verification_token_column_to_user_table', 1572945904);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `payments`
 --
 
@@ -305,33 +325,50 @@ CREATE TABLE `purchase_details` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Estrutura da tabela `user`
 --
 
-CREATE TABLE `users` (
-  `email` varchar(65) NOT NULL,
+CREATE TABLE `user` (
+  `auth_key` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password_hash` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `password_reset_token` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(50) NOT NULL,
+  `status` smallint(6) NOT NULL DEFAULT '10',
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) NOT NULL,
+  `verification_token` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `name` varchar(65) NOT NULL,
   `surname` varchar(65) NOT NULL,
-  `birth_date` date NOT NULL,
+  `birth_date` varchar(10) NOT NULL,
   `gender` enum('M','F') NOT NULL,
-  `phone_number` int(9) NOT NULL,
-  `password` varchar(65) NOT NULL,
+  `phone_number` varchar(11) NOT NULL,
   `height` int(3) DEFAULT NULL,
   `weight` decimal(7,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Índices para tabelas despejadas
+-- Extraindo dados da tabela `user`
+--
+
+INSERT INTO `user` (`auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`, `name`, `surname`, `birth_date`, `gender`, `phone_number`, `height`, `weight`) VALUES
+('Ppjx-IrQIczovvIQqm-HX3R6-fAq3k6D', '$2y$13$413lxamOVQ1J3371Wxvh4uC67ygn8gBhP5FGUuM2xHZoWrlHAVWjC', NULL, 'miguelmendonca@hotmail.com', 10, 1573548037, 1573548037, 'faD67gsRxdvo0_roUfqCAR-yiCAhWX09_1573548037', 'miguel', 'mendonça', '0000-00-00', 'M', '911-544-645', NULL, NULL),
+('NQbOeQLqmNvaTWc8qh81JtN2Bt6kALdi', '$2y$13$FD5OuvrgUXdHdWSn4wIWhejGjWfqOb572wxtSW6d89fO9/wAP.mTC', NULL, 'miguelmendoncra@hotmail.com', 9, 1573728853, 1573728853, '6sYeRkCsC5A9CErk8tPSUcppDYa0uZYY_1573728853', 'rui', 'mendonça', '0000-00-00', 'M', '124-214-123', NULL, NULL),
+('k_1rVFOUoojpELEQkUNBTiesIoeJAn6o', '$2y$13$QFmrjRAjuN3wWaC3ldP3mOeVgwWZxIiIAKBw4wqfnPYhUcpXmfC7u', NULL, 'pombito@hotmail.com', 9, 1573721178, 1573721178, 'Pf1Jl2mGkfB84mOv37GmBNLcNjC15Rt3_1573721178', 'fernando', 'pombeiro', '0000-00-00', 'F', '991-239-592', NULL, NULL),
+('atq-trvNRa8CU-wWAg4hwLq-mw_MtXIV', '$2y$13$Yt.OAluFyleDURdXRO2.FeZMGtERkDW7ixFvbbNoaxR/9B.Q.BxeS', NULL, 'potato@hotmail.com', 9, 1573718836, 1573718836, 'MGsHpE99gA03zfGMpi33eJJk2hFUiAQD_1573718836', 'potato', 'potata', '0000-00-00', 'F', '0', NULL, NULL),
+('60T1z7FJbqOqDTozTb6i7CA42ET46K5X', '$2y$13$gXivA8QPoj9nHL.wThMj0O.Gwjk4zil/7UwbPv2D5yLYnXOendzoa', NULL, 'ruifmiguel@hotmail.com', 10, 1572946478, 1572946478, 'Hg1ynpDVxQ-4Ci5wvFRYiASzDrTaVDmy_1572946478', 'rui', '', '0000-00-00', 'M', '0', NULL, NULL);
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Índices para tabela `admin`
+-- Indexes for table `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`admin_id`);
 
 --
--- Índices para tabela `adresses`
+-- Indexes for table `adresses`
 --
 ALTER TABLE `adresses`
   ADD PRIMARY KEY (`adress_id`),
@@ -339,39 +376,45 @@ ALTER TABLE `adresses`
   ADD KEY `country_id` (`country_id`);
 
 --
--- Índices para tabela `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Índices para tabela `countries`
+-- Indexes for table `countries`
 --
 ALTER TABLE `countries`
   ADD PRIMARY KEY (`country_id`);
 
 --
--- Índices para tabela `payments`
+-- Indexes for table `migration`
+--
+ALTER TABLE `migration`
+  ADD PRIMARY KEY (`version`);
+
+--
+-- Indexes for table `payments`
 --
 ALTER TABLE `payments`
   ADD PRIMARY KEY (`payment_id`);
 
 --
--- Índices para tabela `photos`
+-- Indexes for table `photos`
 --
 ALTER TABLE `photos`
   ADD PRIMARY KEY (`photo_id`),
   ADD KEY `product_id` (`product_id`);
 
 --
--- Índices para tabela `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`product_id`),
   ADD KEY `category_id` (`category_id`);
 
 --
--- Índices para tabela `purchases`
+-- Indexes for table `purchases`
 --
 ALTER TABLE `purchases`
   ADD PRIMARY KEY (`purchase_id`),
@@ -380,79 +423,79 @@ ALTER TABLE `purchases`
   ADD KEY `payment_id` (`payment_id`);
 
 --
--- Índices para tabela `purchase_details`
+-- Indexes for table `purchase_details`
 --
 ALTER TABLE `purchase_details`
   ADD KEY `purchase_id` (`purchase_id`),
   ADD KEY `email` (`email`);
 
 --
--- Índices para tabela `users`
+-- Indexes for table `user`
 --
-ALTER TABLE `users`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`email`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de tabela `admin`
+-- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
   MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `adresses`
+-- AUTO_INCREMENT for table `adresses`
 --
 ALTER TABLE `adresses`
   MODIFY `adress_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `category_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `countries`
+-- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
   MODIFY `country_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
--- AUTO_INCREMENT de tabela `payments`
+-- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
   MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `photos`
+-- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
   MODIFY `photo_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de tabela `purchases`
+-- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
   MODIFY `purchase_id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para despejos de tabelas
+-- Constraints for dumped tables
 --
 
 --
 -- Limitadores para a tabela `adresses`
 --
 ALTER TABLE `adresses`
-  ADD CONSTRAINT `adresses_ibfk_1` FOREIGN KEY (`email`) REFERENCES `users` (`email`),
+  ADD CONSTRAINT `adresses_ibfk_1` FOREIGN KEY (`email`) REFERENCES `user` (`email`),
   ADD CONSTRAINT `adresses_ibfk_2` FOREIGN KEY (`country_id`) REFERENCES `countries` (`country_id`);
 
 --
@@ -472,7 +515,7 @@ ALTER TABLE `products`
 --
 ALTER TABLE `purchases`
   ADD CONSTRAINT `purchases_ibfk_1` FOREIGN KEY (`adress_id`) REFERENCES `adresses` (`adress_id`),
-  ADD CONSTRAINT `purchases_ibfk_2` FOREIGN KEY (`email`) REFERENCES `users` (`email`),
+  ADD CONSTRAINT `purchases_ibfk_2` FOREIGN KEY (`email`) REFERENCES `user` (`email`),
   ADD CONSTRAINT `purchases_ibfk_3` FOREIGN KEY (`payment_id`) REFERENCES `payments` (`payment_id`);
 
 --
@@ -480,7 +523,7 @@ ALTER TABLE `purchases`
 --
 ALTER TABLE `purchase_details`
   ADD CONSTRAINT `purchase_details_ibfk_1` FOREIGN KEY (`purchase_id`) REFERENCES `purchases` (`purchase_id`),
-  ADD CONSTRAINT `purchase_details_ibfk_2` FOREIGN KEY (`email`) REFERENCES `users` (`email`);
+  ADD CONSTRAINT `purchase_details_ibfk_2` FOREIGN KEY (`email`) REFERENCES `user` (`email`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
