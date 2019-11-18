@@ -3,6 +3,7 @@ package amsi.dei.estg.ipleiria.surfectstore;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.DownloadManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -34,49 +35,56 @@ import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
 
-    private EditText etPrimeiroNome, etUltimoNome, etEmail, etPassword, etTelemovel, etDataDeNascimento;
-    private Button btRegistar;
-    private TextView tvMinusculas, tvMaiusculas, tvNumeros, tvCaracteres;
-    private RadioButton radioButton;
-    private RadioGroup radioGroup;
+    private EditText primeiroNome, ultimoNome, email, password, numeroTelemovel, dataDeNascimento;
+    private Button registar;
+    private TextView minusculas, maiusculas, numeros, caracteres;
+    private RadioButton generoMasculino;
+    private static String URL_REGIST = "http://10.80.10.110/android_register_login/register.php";
+
     private DatePickerDialog.OnDateSetListener setListener;
-    private static String URL_REGIST = "http://192.168.1.1/android_register_login/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        etPrimeiroNome = findViewById(R.id.etPrimeiroNome);
-        etUltimoNome = findViewById(R.id.etUltimoNome);
-        etEmail = findViewById(R.id.etEmail);
-        etTelemovel = findViewById(R.id.etTelemovel);
-        etDataDeNascimento = findViewById(R.id.etDataDeNascimento);
-        etPassword = findViewById(R.id.etPassword);
-        btRegistar = findViewById(R.id.btRegistar);
-        tvMinusculas = findViewById(R.id.tvMinusculas);
-        tvMaiusculas = findViewById(R.id.tvMaiusculas);
-        tvNumeros = findViewById(R.id.tvNumeros);
-        tvCaracteres = findViewById(R.id.tvCaracteres);
-        radioGroup = (RadioGroup) findViewById(R.id.rgBotoes);
+        // Achar os objetos no xml
+        primeiroNome = findViewById(R.id.reg_etPrimeiroNome);
+        ultimoNome = findViewById(R.id.reg_etUltimoNome);
+        email = findViewById(R.id.reg_etEmail);
+        numeroTelemovel = findViewById(R.id.reg_etTelemovel);
+        dataDeNascimento = findViewById(R.id.reg_etDataDeNascimento);
+        password = findViewById(R.id.reg_etPassword);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.logo2);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        generoMasculino = findViewById(R.id.reg_rbMasculino);
 
-        btRegistar.setOnClickListener(new View.OnClickListener() {
+        registar = findViewById(R.id.reg_btRegistar);
+
+        minusculas = findViewById(R.id.reg_tvMinusculas);
+        maiusculas = findViewById(R.id.reg_tvMaiusculas);
+        numeros = findViewById(R.id.reg_tvNumeros);
+        caracteres = findViewById(R.id.reg_tvCaracteres);
+
+        // Clicar no botão registar
+        registar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Registar();
             }
         });
 
+        // Colocar o logotipo na action bar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.logo2);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        // Ao clicar na data de nascimento, aparece um datepicker dialog para escolher a data
         Calendar calendario = Calendar.getInstance();
         final int ano = calendario.get(Calendar.YEAR);
         final int mes = calendario.get(Calendar.MONTH);
         final int dia = calendario.get(Calendar.DAY_OF_MONTH);
 
-        etDataDeNascimento.setOnClickListener(new View.OnClickListener() {
+        dataDeNascimento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(
@@ -85,14 +93,15 @@ public class Register extends AppCompatActivity {
                     public void onDateSet(DatePicker view, int ano, int mes, int dia) {
                         mes = mes + 1;
                         String data = ano + "/" + mes + "/" + dia;
-                        etDataDeNascimento.setText(data);
+                        dataDeNascimento.setText(data);
                     }
                 }, ano, mes, dia);
                 datePickerDialog.show();
             }
         });
 
-        etPassword.addTextChangedListener(new TextWatcher() {
+        // Obter todos os caracteres da password
+        password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -100,8 +109,8 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String password = etPassword.getText().toString();
-                validarPassword(password);
+                String Password = password.getText().toString();
+                ValidarPassword(Password);
             }
 
             @Override
@@ -110,16 +119,16 @@ public class Register extends AppCompatActivity {
             }
         });
     }
+
+    // Procedimento Registar
     private void Registar(){
-
-        btRegistar.setVisibility(View.GONE);
-
-        final String primeiroNome = this.etPrimeiroNome.getText().toString().trim();
-        final String ultimoNome = this.etUltimoNome.getText().toString().trim();
-        final String email = this.etEmail.getText().toString().trim();
-        final String password = this.etPassword.getText().toString().trim();
-        final String numeroTelemovel = this.etTelemovel.getText().toString().trim();
-        final String dataNascimento = this.etDataDeNascimento.getText().toString().trim();
+        final String _primeiroNome = this.primeiroNome.getText().toString().trim();
+        final String _ultimoNome = this.ultimoNome.getText().toString().trim();
+        final String _email = this.email.getText().toString().trim();
+        final String _password = this.password.getText().toString().trim();
+        final String _dataDeNascimento = this.dataDeNascimento.getText().toString().trim();
+        final String _numeroTelemovel = this.numeroTelemovel.getText().toString().trim();
+        final String _generoMasculino = this.generoMasculino.isChecked()? "M":"F";
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
                 new Response.Listener<String>() {
@@ -129,33 +138,32 @@ public class Register extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             String sucesso = jsonObject.getString("sucesso");
 
-                            if(sucesso.equals("1")){
+                            if (sucesso.equals("1")) {
                                 Toast.makeText(Register.this, "Registado com sucesso!", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(Register.this, "Não foi efetuado o registo! Tente outra vez!" + e.toString(), Toast.LENGTH_SHORT).show();
-                            btRegistar.setVisibility(View.VISIBLE);
+                            Toast.makeText(Register.this, "Não registado! Tente outra vez! " + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Register.this, "Não foi efetuado o registo! Tente outra vez!" + error.toString(), Toast.LENGTH_SHORT).show();
-                        btRegistar.setVisibility(View.VISIBLE);
+                        Toast.makeText(Register.this, "Não registado! Tente outra vez! " + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 })
         {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("primeiro nome", primeiroNome);
-                params.put("ultimo nome", ultimoNome);
-                params.put("email", email);
-                params.put("password", password);
-                params.put("data de nascimento", dataNascimento);
-                params.put("numero de telemovel", numeroTelemovel);
+                params.put("primeiroNome", _primeiroNome);
+                params.put("ultimoNome", _ultimoNome);
+                params.put("email", _email);
+                params.put("password", _password);
+                params.put("dataDeNascimento", _dataDeNascimento);
+                params.put("numeroTelemovel", _numeroTelemovel);
+                params.put("generoMasculino", _generoMasculino);
                 return params;
             }
         };
@@ -164,39 +172,34 @@ public class Register extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void validarPassword(String etPassword) {
+    // Procedimento para validar se a password contém os requisitos necessários
+    public void ValidarPassword(String password) {
         Pattern upperCase = Pattern.compile("[A-Z]");
         Pattern lowerCase = Pattern.compile("[a-z]");
         Pattern digitCase = Pattern.compile("[0-9]");
 
-        if (!lowerCase.matcher(etPassword).find()) {
-            tvMinusculas.setTextColor(Color.RED);
+        if (!lowerCase.matcher(password).find()) {
+            minusculas.setTextColor(Color.RED);
         } else {
-            tvMinusculas.setTextColor(Color.GREEN);
+            minusculas.setTextColor(Color.GREEN);
         }
 
-        if (!upperCase.matcher(etPassword).find()) {
-            tvMaiusculas.setTextColor(Color.RED);
+        if (!upperCase.matcher(password).find()) {
+            maiusculas.setTextColor(Color.RED);
         } else {
-            tvMaiusculas.setTextColor(Color.GREEN);
+            maiusculas.setTextColor(Color.GREEN);
         }
 
-        if (!digitCase.matcher(etPassword).find()) {
-            tvNumeros.setTextColor(Color.RED);
+        if (!digitCase.matcher(password).find()) {
+            numeros.setTextColor(Color.RED);
         } else {
-            tvNumeros.setTextColor(Color.GREEN);
+            numeros.setTextColor(Color.GREEN);
         }
 
-        if (etPassword.length() < 8) {
-            tvCaracteres.setTextColor(Color.RED);
+        if (password.length() < 8) {
+            caracteres.setTextColor(Color.RED);
         } else {
-            tvCaracteres.setTextColor(Color.GREEN);
+            caracteres.setTextColor(Color.GREEN);
         }
-    }
-
-    public void rbClick (View v) {
-
-        int radioButtonId = radioGroup.getCheckedRadioButtonId();
-        radioButton = (RadioButton) findViewById(radioButtonId);
     }
 }

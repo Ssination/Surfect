@@ -29,10 +29,10 @@ import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
-    private EditText etEmail, etPassword;
-    private Button btLogin;
-    private TextView tvContaNao;
-    private static String URL_LOGIN = "http://192.168.1.1/android_register_login/login.php";
+    private EditText email, password;
+    private Button login;
+    private TextView contaNao;
+    private static String URL_LOGIN = "http://10.80.10.110/android_register_login/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,27 +44,27 @@ public class Login extends AppCompatActivity {
         getSupportActionBar().setLogo(R.drawable.logo2);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        btLogin = (Button) findViewById(R.id.btLogin);
-        tvContaNao = (TextView) findViewById(R.id.tvContaNao);
+        email = (EditText) findViewById(R.id.log_etEmail);
+        password = (EditText) findViewById(R.id.log_etPassword);
+        login = (Button) findViewById(R.id.log_btLogin);
+        contaNao = (TextView) findViewById(R.id.log_tvContaNao);
 
-        btLogin.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = etEmail.getText().toString().trim();
-                String password = etPassword.getText().toString().trim();
+                String _email = email.getText().toString().trim();
+                String _password = password.getText().toString().trim();
 
-                if(!email.isEmpty() || !password.isEmpty()) {
-                    Login(email, password);
+                if(!_email.isEmpty() || !_password.isEmpty()){
+                    Login(_email, _password);
                 } else {
-                    etEmail.setError("Insira o seu email!");
-                    etPassword.setError("Insira a sua password!");
+                    email.setError("Por favor insira o email!");
+                    password.setError("Por favor insira a password!");
                 }
             }
         });
 
-        tvContaNao.setOnClickListener(new View.OnClickListener() {
+        contaNao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Login.this, Register.class);
@@ -73,11 +73,10 @@ public class Login extends AppCompatActivity {
         });
     }
 
+
     private void Login(final String email, final String password) {
 
-        btLogin.setVisibility(View.GONE);
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
+        StringRequest stringRequest =  new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -86,31 +85,28 @@ public class Login extends AppCompatActivity {
                             String sucesso = jsonObject.getString("sucesso");
                             JSONArray jsonArray = jsonObject.getJSONArray("login");
 
-                            if(sucesso.equals("1")){
-                                for (int i = 0; i < jsonArray.length(); i++){
+                            if (sucesso.equals("1")) {
+
+                                for(int i = 0; i < jsonArray.length(); i++) {
 
                                     JSONObject object = jsonArray.getJSONObject(i);
-
-                                    String firstName = object.getString("firstName").trim();
-                                    String email = object.getString("email").trim();
+                                    String name = object.getString("name").trim();
 
                                     Toast.makeText(Login.this,
-                                            "Login efetuado com sucesso," + firstName + "\n(" + email + ")",
+                                            "Login efetuado com sucesso! \nBem vindo " + name + ".",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
-
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            btLogin.setVisibility(View.VISIBLE);
                             Toast.makeText(Login.this, "Erro!" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        btLogin.setVisibility(View.VISIBLE);
                         Toast.makeText(Login.this, "Erro!" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 })

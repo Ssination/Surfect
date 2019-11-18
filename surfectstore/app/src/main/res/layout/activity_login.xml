@@ -8,7 +8,7 @@
     tools:context=".Login">
 
     <LinearLayout
-        android:id="@+id/linBackground"
+        android:id="@+id/log_linBackground"
         android:layout_width="338dp"
         android:layout_height="640dp"
         android:background="@color/colorPrimary"
@@ -19,13 +19,13 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imgIcon"
+            android:id="@+id/log_imgIcon"
             android:layout_width="match_parent"
             android:layout_height="85dp"
             app:srcCompat="@drawable/circleicon" />
 
         <TextView
-            android:id="@+id/tvLogin"
+            android:id="@+id/log_tvLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/doppio_one"
@@ -35,13 +35,13 @@
             android:textSize="24sp" />
 
         <LinearLayout
-            android:id="@+id/linEmail"
+            android:id="@+id/log_linEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilEmail"
+                android:id="@+id/log_tilEmail"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
                 app:boxStrokeColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
+                    android:id="@+id/log_etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/doppio_one"
@@ -63,13 +63,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linPassword"
+            android:id="@+id/log_linPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPassword"
+                android:id="@+id/log_tilPassword"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
                 app:passwordToggleTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPassword"
+                    android:id="@+id/log_etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/doppio_one"
@@ -97,12 +97,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/log_linNovaPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvNovaPassword"
+                android:id="@+id/log_tvNovaPassword"
                 android:layout_width="209dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -114,7 +115,7 @@
                 android:textSize="12sp" />
 
             <Switch
-                android:id="@+id/swLembrar"
+                android:id="@+id/log_swLembrar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
@@ -126,12 +127,13 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/log_linBtLogin"
             android:layout_width="338dp"
             android:layout_height="366dp"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btLogin"
+                android:id="@+id/log_btLogin"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
@@ -144,9 +146,9 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/tvContaNao"
+                android:id="@+id/log_tvContaNao"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/doppio_one"

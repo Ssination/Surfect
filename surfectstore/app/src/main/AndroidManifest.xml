@@ -13,11 +13,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Login"></activity>
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:targetApi="m">
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".Register"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />

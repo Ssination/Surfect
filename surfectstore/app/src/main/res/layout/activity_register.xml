@@ -8,7 +8,7 @@
     tools:context=".Register">
 
     <LinearLayout
-        android:id="@+id/linBackground"
+        android:id="@+id/reg_linBackground"
         android:layout_width="338dp"
         android:layout_height="640dp"
         android:background="@color/colorPrimary"
@@ -20,13 +20,13 @@
         app:layout_constraintVertical_bias="0.181">
 
         <ImageView
-            android:id="@+id/imgIcon"
+            android:id="@+id/reg_imgIcon"
             android:layout_width="match_parent"
             android:layout_height="85dp"
             app:srcCompat="@drawable/circleicon" />
 
         <TextView
-            android:id="@+id/tvRegisto"
+            android:id="@+id/reg_tvRegisto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/doppio_one"
@@ -36,13 +36,13 @@
             android:textSize="24sp" />
 
         <LinearLayout
-            android:id="@+id/linPrimeiroNome"
+            android:id="@+id/reg_linPrimeiroNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPrimeiroNome"
+                android:id="@+id/reg_tilPrimeiroNome"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 app:boxStrokeColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPrimeiroNome"
+                    android:id="@+id/reg_etPrimeiroNome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/doppio_one"
@@ -64,13 +64,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linUltimoNome"
+            android:id="@+id/reg_linUltimoNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilUltimoNome"
+                android:id="@+id/reg_tilUltimoNome"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                 app:boxStrokeColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etUltimoNome"
+                    android:id="@+id/reg_etUltimoNome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/doppio_one"
@@ -92,13 +92,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linEmail"
+            android:id="@+id/reg_linEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilEmail"
+                android:id="@+id/reg_tilEmail"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -109,7 +109,7 @@
                 app:boxStrokeColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etEmail"
+                    android:id="@+id/reg_etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/doppio_one"
@@ -120,13 +120,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linPassword"
+            android:id="@+id/reg_linPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilPassword"
+                android:id="@+id/reg_tilPassword"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                 app:passwordToggleTint="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPassword"
+                    android:id="@+id/reg_etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/doppio_one"
@@ -154,13 +154,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linValidacoes"
+            android:id="@+id/reg_linValidacoes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvMinusculas"
+                android:id="@+id/reg_tvMinusculas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -170,7 +170,7 @@
                 android:textColor="@color/colorAccent" />
 
             <TextView
-                android:id="@+id/tvMaiusculas"
+                android:id="@+id/reg_tvMaiusculas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -180,7 +180,7 @@
                 android:textColor="@color/colorAccent" />
 
             <TextView
-                android:id="@+id/tvNumeros"
+                android:id="@+id/reg_tvNumeros"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -190,7 +190,7 @@
                 android:textColor="@color/colorAccent" />
 
             <TextView
-                android:id="@+id/tvCaracteres"
+                android:id="@+id/reg_tvCaracteres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -201,13 +201,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linNumeroTelemovel"
+            android:id="@+id/reg_linNumeroTelemovel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilNumeroTelemovel"
+                android:id="@+id/reg_tilNumeroTelemovel"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -218,27 +218,27 @@
                 app:boxStrokeColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etTelemovel"
+                    android:id="@+id/reg_etTelemovel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/doppio_one"
-                    android:textColor="@color/colorAccent"
                     android:digits="1234567890"
+                    android:fontFamily="@font/doppio_one"
                     android:inputType="number|textNoSuggestions"
-                    android:maxLength="9"/>
+                    android:maxLength="9"
+                    android:textColor="@color/colorAccent" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linDataDeNascimento"
+            android:id="@+id/reg_linDataDeNascimento"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilDataDeNascimento"
+                android:id="@+id/reg_tilDataDeNascimento"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -249,7 +249,7 @@
                 app:boxStrokeColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etDataDeNascimento"
+                    android:id="@+id/reg_etDataDeNascimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:focusableInTouchMode="false"
@@ -261,14 +261,14 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linGenero"
+            android:id="@+id/reg_linGenero"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/tvGenero"
+                android:id="@+id/reg_tvGenero"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -279,25 +279,26 @@
                 android:textSize="18sp" />
 
             <RadioGroup
-                android:id="@+id/rgBotoes"
+                android:id="@+id/reg_rgBotoes"
                 android:layout_width="485dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rbMasculino"
+                    android:id="@+id/reg_rbMasculino"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:buttonTint="@color/colorAccent"
                     android:fontFamily="@font/doppio_one"
                     android:text="@string/Masculino"
+                    android:checked="true"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
                 <RadioButton
-                    android:id="@+id/rbFeminino"
+                    android:id="@+id/reg_rbFeminino"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -310,13 +311,13 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/linRegistar"
+            android:id="@+id/reg_linRegistar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btRegistar"
+                android:id="@+id/reg_btRegistar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
@@ -328,7 +329,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/reg_tvObrigatorio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
