@@ -2,90 +2,103 @@
 
 namespace app\models;
 
-use Yii;
-
-/**
- * This is the model class for table "users".
- *
- * @property string $email
- * @property string $name
- * @property string $surname
- * @property string $birth_date
- * @property string $gender
- * @property int $phone_number
- * @property string $password
- * @property int $height
- * @property string $weight
- *
- * @property Adresses[] $adresses
- * @property PurchaseDetails[] $purchaseDetails
- * @property Purchases[] $purchases
- */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'users';
-    }
+    public $id;
+    public $username;
+    public $password;
+    public $authKey;
+    public $accessToken;
+
+    private static $users = [
+        '100' => [
+            'id' => '100',
+            'username' => 'admin',
+            'password' => 'admin',
+            'authKey' => 'test100key',
+            'accessToken' => '100-token',
+        ],
+        '101' => [
+            'id' => '101',
+            'username' => 'demo',
+            'password' => 'demo',
+            'authKey' => 'test101key',
+            'accessToken' => '101-token',
+        ],
+    ];
+
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
+    public static function findIdentity($id)
     {
-        return [
-            [['email', 'name', 'surname', 'birth_date', 'gender', 'phone_number', 'password'], 'required'],
-            [['birth_date'], 'safe'],
-            [['gender'], 'string'],
-            [['phone_number', 'height'], 'integer'],
-            [['weight'], 'number'],
-            [['email', 'name', 'surname', 'password'], 'string', 'max' => 65],
-            [['email'], 'unique'],
-        ];
+        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
+    public static function findIdentityByAccessToken($token, $type = null)
     {
-        return [
-            'email' => 'Email',
-            'name' => 'Name',
-            'surname' => 'Surname',
-            'birth_date' => 'Birth Date',
-            'gender' => 'Gender',
-            'phone_number' => 'Phone Number',
-            'password' => 'Password',
-            'height' => 'Height',
-            'weight' => 'Weight',
-        ];
+        foreach (self::$users as $user) {
+            if ($user['accessToken'] === $token) {
+                return new static($user);
+            }
+        }
+
+        return null;
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * Finds user by username
+     *
+     * @param string $username
+     * @return static|null
      */
-    public function getAdresses()
+    public static function findByUsername($username)
     {
-        return $this->hasMany(Adresses::className(), ['email' => 'email']);
+        foreach (self::$users as $user) {
+            if (strcasecmp($user['username'], $username) === 0) {
+                return new static($user);
+            }
+        }
+
+        return null;
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * {@inheritdoc}
      */
-    public function getPurchaseDetails()
+    public function getId()
     {
-        return $this->hasMany(PurchaseDetails::className(), ['email' => 'email']);
+        return $this->id;
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * {@inheritdoc}
      */
-    public function getPurchases()
+    public function getAuthKey()
     {
-        return $this->hasMany(Purchases::className(), ['email' => 'email']);
+        return $this->authKey;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function validateAuthKey($authKey)
+    {
+        return $this->authKey === $authKey;
+    }
+
+    /**
+     * Validates password
+     *
+     * @param string $password password to validate
+     * @return bool if password provided is valid for current user
+     */
+    public function validatePassword($password)
+    {
+        return $this->password === $password;
     }
 }
