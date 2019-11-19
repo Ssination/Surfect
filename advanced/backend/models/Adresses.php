@@ -15,7 +15,7 @@ use Yii;
  * @property string $email
  * @property int $country_id
  *
- * @property User $email0
+ * @property User $emailUser
  * @property Countries $country
  * @property Purchases[] $purchases
  */
@@ -63,7 +63,7 @@ class Adresses extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getEmail0()
+    public function getEmailUser()
     {
         return $this->hasOne(User::className(), ['email' => 'email']);
     }

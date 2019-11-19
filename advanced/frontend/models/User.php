@@ -19,7 +19,7 @@ use Yii;
  * @property string $surname
  * @property string $birth_date
  * @property string $gender
- * @property int $phone_number
+ * @property string $phone_number
  * @property int $height
  * @property string $weight
  *
@@ -27,7 +27,7 @@ use Yii;
  * @property PurchaseDetails[] $purchaseDetails
  * @property Purchases[] $purchases
  */
-class UserShow extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -44,14 +44,15 @@ class UserShow extends \yii\db\ActiveRecord
     {
         return [
             [['auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'name', 'surname', 'birth_date', 'gender', 'phone_number'], 'required'],
-            [['status', 'created_at', 'updated_at', 'phone_number', 'height'], 'integer'],
-            [['birth_date'], 'safe'],
+            [['status', 'created_at', 'updated_at', 'height'], 'integer'],
             [['gender'], 'string'],
             [['weight'], 'number'],
             [['auth_key'], 'string', 'max' => 32],
             [['password_hash', 'password_reset_token', 'verification_token'], 'string', 'max' => 255],
             [['email'], 'string', 'max' => 50],
             [['name', 'surname'], 'string', 'max' => 65],
+            [['birth_date'], 'string', 'max' => 10],
+            [['phone_number'], 'string', 'max' => 11],
             [['email'], 'unique'],
         ];
     }

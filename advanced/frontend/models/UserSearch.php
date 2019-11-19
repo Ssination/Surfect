@@ -1,15 +1,15 @@
 <?php
 
-namespace app\models;
+namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\User;
 
 /**
- * UserShowSearch represents the model behind the search form of `app\models\User`.
+ * UserSearch represents the model behind the search form of `app\models\User`.
  */
-class UserShowSearch extends User
+class UserSearch extends User
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class UserShowSearch extends User
     public function rules()
     {
         return [
-            [['auth_key', 'password_hash', 'password_reset_token', 'email', 'verification_token', 'name', 'surname', 'birth_date', 'gender'], 'safe'],
-            [['status', 'created_at', 'updated_at', 'phone_number', 'height'], 'integer'],
+            [['auth_key', 'password_hash', 'password_reset_token', 'email', 'verification_token', 'name', 'surname', 'birth_date', 'gender', 'phone_number'], 'safe'],
+            [['status', 'created_at', 'updated_at', 'height'], 'integer'],
             [['weight'], 'number'],
         ];
     }
@@ -62,10 +62,8 @@ class UserShowSearch extends User
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'birth_date' => $this->birth_date,
-            'phone_number' => $this->phone_number,
-            //'height' => $this->height,
-            //'weight' => $this->weight,
+            'height' => $this->height,
+            'weight' => $this->weight,
         ]);
 
         $query->andFilterWhere(['like', 'auth_key', $this->auth_key])
@@ -74,9 +72,10 @@ class UserShowSearch extends User
             ->andFilterWhere(['like', 'email', $this->email])
             ->andFilterWhere(['like', 'verification_token', $this->verification_token])
             ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'birth_date', $this->birth_date])
             ->andFilterWhere(['like', 'surname', $this->surname])
-            ->andFilterWhere(['like', 'gender', $this->gender]);
+            ->andFilterWhere(['like', 'birth_date', $this->birth_date])
+            ->andFilterWhere(['like', 'gender', $this->gender])
+            ->andFilterWhere(['like', 'phone_number', $this->phone_number]);
 
         return $dataProvider;
     }

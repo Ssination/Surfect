@@ -24,9 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html:: a('Details',['delete', 'id' => $model->purchase_id],)
+        ?>
     </p>
     <?php
-    echo ['label'=>'Users','url'=>['/user/index']];
+
     ?>
     <?=
     DetailView::widget([
@@ -34,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'purchase_id',
             'purchase_date',
-            'adress_id',
+            //'adress_id',
             'email:email',
             'payment_id',
         ],
