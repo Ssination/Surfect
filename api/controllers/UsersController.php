@@ -54,6 +54,8 @@ class UsersController extends Controller
 //        $user -> height = "85";
 //        $user -> weight = "1.86";
         $user -> save();
+		
+		echo "Sucesso";
     }
 
     /**
