@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Nov-2019 às 12:55
+-- Generation Time: 19-Nov-2019 às 13:36
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.2.16
 
@@ -50,6 +50,13 @@ CREATE TABLE `adresses` (
   `country_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `adresses`
+--
+
+INSERT INTO `adresses` (`adress_id`, `adress_name`, `city`, `zip_code`, `district`, `email`, `country_id`) VALUES
+(1, 'rua tal', 'alfeizerao', '0000-00-00', 'alfeizerao', 'ruifmiguel@hotmail.com', 119);
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +67,14 @@ CREATE TABLE `categories` (
   `category_id` int(10) NOT NULL,
   `name` varchar(65) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `categories`
+--
+
+INSERT INTO `categories` (`category_id`, `name`) VALUES
+(1, 'potato'),
+(2, 'Elsecundo');
 
 -- --------------------------------------------------------
 
@@ -266,6 +281,13 @@ CREATE TABLE `payments` (
   `photos` varchar(65) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `payments`
+--
+
+INSERT INTO `payments` (`payment_id`, `name`, `photos`) VALUES
+(1, 'Cartão', '');
+
 -- --------------------------------------------------------
 
 --
@@ -294,6 +316,13 @@ CREATE TABLE `products` (
   `category_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Extraindo dados da tabela `products`
+--
+
+INSERT INTO `products` (`product_id`, `name`, `price`, `stock`, `description`, `discount`, `category_id`) VALUES
+(1, 'Fato 1', '50.00', 200, 'o 1º de muitos', 10, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -307,6 +336,13 @@ CREATE TABLE `purchases` (
   `email` varchar(65) NOT NULL,
   `payment_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `purchases`
+--
+
+INSERT INTO `purchases` (`purchase_id`, `purchase_date`, `adress_id`, `email`, `payment_id`) VALUES
+(1, '2019-11-08', 1, 'ruifmiguel@hotmail.com', 1);
 
 -- --------------------------------------------------------
 
@@ -343,19 +379,18 @@ CREATE TABLE `user` (
   `gender` enum('M','F') NOT NULL,
   `phone_number` varchar(11) NOT NULL,
   `height` int(3) DEFAULT NULL,
-  `weight` decimal(7,2) DEFAULT NULL
+  `weight` decimal(7,2) DEFAULT NULL,
+  `photo` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `user`
 --
 
-INSERT INTO `user` (`auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`, `name`, `surname`, `birth_date`, `gender`, `phone_number`, `height`, `weight`) VALUES
-('Ppjx-IrQIczovvIQqm-HX3R6-fAq3k6D', '$2y$13$413lxamOVQ1J3371Wxvh4uC67ygn8gBhP5FGUuM2xHZoWrlHAVWjC', NULL, 'miguelmendonca@hotmail.com', 10, 1573548037, 1573548037, 'faD67gsRxdvo0_roUfqCAR-yiCAhWX09_1573548037', 'miguel', 'mendonça', '0000-00-00', 'M', '911-544-645', NULL, NULL),
-('NQbOeQLqmNvaTWc8qh81JtN2Bt6kALdi', '$2y$13$FD5OuvrgUXdHdWSn4wIWhejGjWfqOb572wxtSW6d89fO9/wAP.mTC', NULL, 'miguelmendoncra@hotmail.com', 9, 1573728853, 1573728853, '6sYeRkCsC5A9CErk8tPSUcppDYa0uZYY_1573728853', 'rui', 'mendonça', '0000-00-00', 'M', '124-214-123', NULL, NULL),
-('k_1rVFOUoojpELEQkUNBTiesIoeJAn6o', '$2y$13$QFmrjRAjuN3wWaC3ldP3mOeVgwWZxIiIAKBw4wqfnPYhUcpXmfC7u', NULL, 'pombito@hotmail.com', 9, 1573721178, 1573721178, 'Pf1Jl2mGkfB84mOv37GmBNLcNjC15Rt3_1573721178', 'fernando', 'pombeiro', '0000-00-00', 'F', '991-239-592', NULL, NULL),
-('atq-trvNRa8CU-wWAg4hwLq-mw_MtXIV', '$2y$13$Yt.OAluFyleDURdXRO2.FeZMGtERkDW7ixFvbbNoaxR/9B.Q.BxeS', NULL, 'potato@hotmail.com', 9, 1573718836, 1573718836, 'MGsHpE99gA03zfGMpi33eJJk2hFUiAQD_1573718836', 'potato', 'potata', '0000-00-00', 'F', '0', NULL, NULL),
-('60T1z7FJbqOqDTozTb6i7CA42ET46K5X', '$2y$13$gXivA8QPoj9nHL.wThMj0O.Gwjk4zil/7UwbPv2D5yLYnXOendzoa', NULL, 'ruifmiguel@hotmail.com', 10, 1572946478, 1572946478, 'Hg1ynpDVxQ-4Ci5wvFRYiASzDrTaVDmy_1572946478', 'rui', '', '0000-00-00', 'M', '0', NULL, NULL);
+INSERT INTO `user` (`auth_key`, `password_hash`, `password_reset_token`, `email`, `status`, `created_at`, `updated_at`, `verification_token`, `name`, `surname`, `birth_date`, `gender`, `phone_number`, `height`, `weight`, `photo`) VALUES
+('Ppjx-IrQIczovvIQqm-HX3R6-fAq3k6D', '$2y$13$413lxamOVQ1J3371Wxvh4uC67ygn8gBhP5FGUuM2xHZoWrlHAVWjC', NULL, 'miguelmendonca@hotmail.com', 10, 1573548037, 1573548037, 'faD67gsRxdvo0_roUfqCAR-yiCAhWX09_1573548037', 'miguel', 'mendonça', '1900-11-21', 'M', '911-544-645', NULL, NULL, ''),
+('eLkmMEXe_giQt6TuDJoS6kmtm_l79hz0', '$2y$13$N0TOYeK96i3Q6ToKQ/Ev8ub4xHtlwozGSGwjTQWGzHJxN3Zo1D4uC', NULL, 'pombito@hotmail.com', 9, 1574166911, 1574166911, 'BQgAZ7oiUn2GKnO__ReJI8kut8Zv-VWE_1574166911', 'miguel', 'potata', '2019-10-28', 'F', '165-168-589', NULL, NULL, NULL),
+('60T1z7FJbqOqDTozTb6i7CA42ET46K5X', '$2y$13$gXivA8QPoj9nHL.wThMj0O.Gwjk4zil/7UwbPv2D5yLYnXOendzoa', NULL, 'ruifmiguel@hotmail.com', 10, 1572946478, 1572946478, 'Hg1ynpDVxQ-4Ci5wvFRYiASzDrTaVDmy_1572946478', 'Rui', 'Miguel', '1999-02-17', 'M', '911-011-894', 177, '72.00', '');
 
 --
 -- Indexes for dumped tables
@@ -449,13 +484,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `adresses`
 --
 ALTER TABLE `adresses`
-  MODIFY `adress_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `adress_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `countries`
@@ -467,7 +502,7 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `payment_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `photos`
@@ -479,13 +514,13 @@ ALTER TABLE `photos`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchases`
 --
 ALTER TABLE `purchases`
-  MODIFY `purchase_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `purchase_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
