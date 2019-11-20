@@ -15,15 +15,19 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
+        <activity android:name=".Home"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".Login"
             android:screenOrientation="portrait">
+
         </activity>
         <activity
             android:name=".Register"
             android:screenOrientation="portrait">
-        </activity>
 
+        </activity>
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />

@@ -134,7 +134,7 @@ public class Register extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        try{
+                       /* try{
                             JSONObject jsonObject = new JSONObject(response);
                             String sucesso = jsonObject.getString("sucesso");
 
@@ -144,7 +144,7 @@ public class Register extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(Register.this, "Não registado! Tente outra vez! " + e.toString(), Toast.LENGTH_SHORT).show();
-                        }
+                        }*/
                     }
                 },
                 new Response.ErrorListener() {

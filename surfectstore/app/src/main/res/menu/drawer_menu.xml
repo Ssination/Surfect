@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Início" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_profile"
+            android:title="Perfil" />
+        <item
+            android:id="@+id/nav_shop"
+            android:icon="@drawable/ic_shopping"
+            android:title="Loja" />
+        <item
+            android:id="@+id/nav_beach"
+            android:icon="@drawable/ic_beach"
+            android:title="Praias" />
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/ic_help"
+            android:title="Suporte" />
+        <item
+            android:id="@+id/nav_session"
+            android:icon="@drawable/ic_session"
+            android:title="Terminar sessão" />
+    </group>
+
+</menu>
