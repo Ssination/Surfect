@@ -6,14 +6,14 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Purchases */
 
-$this->title = $model->purchase_id;
+$this->title = 'Darkzone purchases';
 $this->params['breadcrumbs'][] = ['label' => 'Purchases', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
 <div class="purchases-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode('Purchase '.$model->purchase_id) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->purchase_id], ['class' => 'btn btn-primary']) ?>
@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?= Html:: a('Details',['delete', 'id' => $model->purchase_id],)
+        <?= Html:: a('Details',['details', 'id' => $model->purchase_id],['class' => 'btn btn-primary'])
         ?>
     </p>
     <?php

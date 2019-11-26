@@ -18,6 +18,7 @@ use dosamigos\datepicker\DatePicker;
     <?= $form->field($model, 'email')->textInput() ?>
     <?= $form->field($model, 'name')->textInput() ?>
     <?= $form->field($model, 'surname')->textInput() ?>
+
     <?= $form->field($model, 'status')->textInput() ?>
     <?= $form->field($model, 'phone_number')->widget(\yii\widgets\MaskedInput::className(), [
         'mask' => '999-999-999',])?>

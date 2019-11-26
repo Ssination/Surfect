@@ -42,7 +42,7 @@ AppAsset::register($this);
 
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Support', 'url' => ['/site/contact']],
             ['label' => 'Login', 'url' => ['/site/login']],
             ['label' => 'Signup', 'url' => ['/site/signup']],
         ];
@@ -50,7 +50,7 @@ AppAsset::register($this);
         $menuItems = [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Profile', 'url' => ['/user/view']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Support', 'url' => ['/site/contact']],
         ];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')

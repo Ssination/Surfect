@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use backend\models\Poducts;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Products */
@@ -22,7 +24,12 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'discount')->textInput() ?>
 
-    <?= $form->field($model, 'category_id')->textInput() ?>
+    <?php
+    $category = \app\models\Categories::find()->all();
+    $listData=ArrayHelper::map($category,'category_id','category_id');
+    ?>
+    <?= $form->field($model, 'category_id')->dropDownList($listData,['prompt'=>'Choose a category']) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -2,7 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-
+use yii\helpers\ArrayHelper;
+use dosamigos\datepicker\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model app\models\Purchases */
 /* @var $form yii\widgets\ActiveForm */
@@ -12,13 +13,36 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'purchase_date')->textInput() ?>
 
-    <?= $form->field($model, 'adress_id')->textInput() ?>
+
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'payment_id')->textInput() ?>
+    <?php
+    $purchase_pay = \app\models\Purchases::find()->all();
+    $listData=ArrayHelper::map($purchase_pay,'payment_id','payment_id');
+    ?>
+
+    <?= $form->field($model, 'payment_id')->dropDownList($listData,['prompt'=>'']) ?>
+
+    <?php
+    $purchase_adress = \app\models\Purchases::find()->all();
+    $listData=ArrayHelper::map($purchase_adress,'adress_id','adress_id');
+    ?>
+
+    <?= $form->field($model, 'adress_id')->dropDownList($listData,['prompt'=>'']) ?>
+
+    <?= $form->field($model, 'purchase_date')->widget(
+        DatePicker::className(), [
+        // inline too, not bad
+        'inline' => true,
+        // modify template for custom rendering
+        'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+        'clientOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd'
+        ]
+    ]);?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
