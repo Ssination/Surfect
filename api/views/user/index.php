@@ -9,12 +9,12 @@ use yii\grid\GridView;
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="users-index">
+<div class="user-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Users', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 
@@ -23,15 +23,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            'auth_key',
+            'password_hash',
+            'password_reset_token',
             'email:email',
-            'name',
-            'surname',
-            'birth_date',
-            'gender',
+            'status',
+            //'created_at',
+            //'updated_at',
+            //'verification_token',
+            //'name',
+            //'surname',
+            //'birth_date',
+            //'gender',
             //'phone_number',
-            //'password',
             //'height',
             //'weight',
+            //'photo',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
