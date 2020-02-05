@@ -4,6 +4,8 @@
     package="amsi.dei.estg.ipleiria.surfectstore">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,24 +17,26 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
-        <activity android:name=".Home"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
         <activity
-            android:name=".Login"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity
-            android:name=".Register"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity
-            android:name=".MainActivity"
+            android:name=".activities.ProductDetails"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".activities.Home"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.Login"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Register"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SplashScreen"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

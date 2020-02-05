@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient2"
-    tools:context=".activities.Login">
+    android:background="@drawable/background_gradient2">
+
 
     <LinearLayout
-        android:id="@+id/log_linBackground"
+        android:id="@+id/mor_linBackground"
         android:layout_width="338dp"
         android:layout_height="640dp"
         android:background="@color/colorPrimary"
@@ -16,124 +15,166 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" >
 
         <ImageView
-            android:id="@+id/log_imgIcon"
+            android:id="@+id/mor_imgIcon"
             android:layout_width="match_parent"
             android:layout_height="85dp"
             app:srcCompat="@drawable/circleicon" />
 
         <TextView
-            android:id="@+id/log_tvLogin"
+            android:id="@+id/mor_tvInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/doppio_one"
-            android:text="@string/tvAceder"
+            android:text="Defina aqui as suas informações de envio."
             android:textAlignment="center"
             android:textColor="@android:color/white"
             android:textSize="24sp" />
 
         <LinearLayout
-            android:id="@+id/log_linEmail"
+            android:id="@+id/mor_linMorada"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/log_tilEmail"
+                android:id="@+id/mor_tilMorada"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:hint="@string/etLoginEmail"
+                android:hint="* Morada"
                 android:textColorHint="@color/colorAccent"
                 app:boxStrokeColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/log_etEmail"
+                    android:id="@+id/mor_etMorada"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/doppio_one"
-                    android:textColor="@color/colorAccent" />
+                    android:textColor="@color/colorAccent"
+                    android:maxLines="1"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/log_linPassword"
+            android:id="@+id/mor_linCodigoPostal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/log_tilPassword"
+                android:id="@+id/mor_tilCodigoPostal"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                android:hint="@string/etLoginPassword"
+                android:hint="* Código Postal (####-###)"
                 android:textColorHint="@color/colorAccent"
-                app:boxStrokeColor="@color/colorAccent"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/colorAccent">
+                app:boxStrokeColor="@color/colorAccent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/log_etPassword"
+                    android:id="@+id/mor_etCodigoPostal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:digits="0123456789-"
                     android:fontFamily="@font/doppio_one"
-                    android:inputType="textPassword"
                     android:textColor="@color/colorAccent"
-                    android:textColorHighlight="@color/colorAccent"
-                    android:textColorHint="@color/colorAccent"
-                    android:textCursorDrawable="@color/colorAccent" />
+                    android:maxLength="8"
+                    android:inputType="textPostalAddress"/>
 
             </com.google.android.material.textfield.TextInputLayout>
-
-            <CheckBox
-                android:id="@+id/log_checkBoxLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:buttonTint="#09EFE3"
-                android:fontFamily="@font/doppio_one"
-                android:text="Lembrar-me"
-                android:textColor="@color/colorAccent" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/log_linBtLogin"
+            android:id="@+id/mor_linPais"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mor_tilPais"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="* País"
+                android:textColorHint="@color/colorAccent"
+                app:boxStrokeColor="@color/colorAccent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/mor_etPais"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:fontFamily="@font/doppio_one"
+                    android:textColor="@color/colorAccent"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mor_linDistrito"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/mor_spinnerDistrito"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorAccent"
+                android:popupBackground="@android:color/white" />
+
+            <TextView
+                android:id="@+id/mor_etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/colorPrimary"
+                android:text="Email" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mor_linAtualizar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/log_btLogin"
+                android:id="@+id/mor_btAtualizar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="250dp"
+                android:layout_marginTop="130dp"
                 android:layout_marginEnd="10dp"
                 android:background="@color/colorAccent"
                 android:fontFamily="@font/doppio_one"
-                android:text="@string/btEntrar"
+                android:text="ATUALIZAR!"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/log_tvContaNao"
+                android:id="@+id/mor_tvObrigatorio"
                 android:layout_width="match_parent"
                 android:layout_height="6dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/doppio_one"
-                android:text="@string/tvContaNao"
-                android:textAlignment="center"
+                android:text="@string/tvObrigatorio"
                 android:textAllCaps="false"
                 android:textColor="@color/colorAccent"
                 android:textSize="12sp" />
@@ -141,4 +182,5 @@
         </LinearLayout>
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

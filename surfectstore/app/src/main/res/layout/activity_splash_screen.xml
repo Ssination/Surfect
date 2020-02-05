@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient2"
-    tools:context=".SplashScreen">
+    tools:context=".activities.SplashScreen">
 
     <ImageView
         android:id="@+id/imgLogo"
@@ -31,21 +31,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.962" />
+        app:layout_constraintVertical_bias="0.96" />
 
     <ImageView
         android:id="@+id/imgSponsor"
-        android:layout_width="61dp"
-        android:layout_height="39dp"
+        android:layout_width="93dp"
+        android:layout_height="65dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.637"
+        app:layout_constraintHorizontal_bias="0.654"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
-        app:srcCompat="@drawable/sponsor" />
+        app:layout_constraintVertical_bias="0.989"
+        app:srcCompat="@drawable/ipl" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

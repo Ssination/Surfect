@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_inicio">
+
+    <fragment
+        android:id="@+id/nav_inicio"
+        android:name="amsi.dei.estg.ipleiria.surfectstore.ui.home.HomeFragment"
+        android:label="@string/home_inicio"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_perfil"
+        android:name="amsi.dei.estg.ipleiria.surfectstore.ui.profile.ProfileFragment"
+        android:label="@string/home_perfil"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/nav_loja"
+        android:name="amsi.dei.estg.ipleiria.surfectstore.ui.shop.ShopFragment"
+        android:label="@string/home_loja"
+        tools:layout="@layout/fragment_shop" />
+
+    <fragment
+        android:id="@+id/nav_morada"
+        android:name="amsi.dei.estg.ipleiria.surfectstore.ui.address.AddressFragment"
+        android:label="@string/home_praias"
+        tools:layout="@layout/fragment_address" />
+
+    <fragment
+        android:id="@+id/nav_suporte"
+        android:name="amsi.dei.estg.ipleiria.surfectstore.ui.support.SupportFragment"
+        android:label="@string/home_suporte"
+        tools:layout="@layout/fragment_support" />
+
+    <fragment
+        android:id="@+id/nav_sessao"
+        android:name="amsi.dei.estg.ipleiria.surfectstore.ui.session.SessionFragment"
+        android:label="@string/home_sessao"
+        tools:layout="@layout/fragment_session" />
+</navigation>

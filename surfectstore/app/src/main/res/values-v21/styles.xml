@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Navigation Home. -->
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
-
 </resources>

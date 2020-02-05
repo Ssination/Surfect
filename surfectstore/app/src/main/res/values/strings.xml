@@ -33,4 +33,56 @@
     <string name="tvNovaPassword">Esqueceu-se da sua password?</string>
     <string name="tvContaNao">Não tem conta? Crie já a sua!</string>
     <string name="swLembrar">Lembrar?</string>
+    <string name="title_activity_home">Home</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="home_inicio">Início</string>
+    <string name="home_perfil">Perfil</string>
+    <string name="home_loja">Loja</string>
+    <string name="home_praias">Praias</string>
+    <string name="home_suporte">Suporte</string>
+    <string name="home_sessao">Terminar Sessão</string>
+    <string name="btEscolher">ESCOLHER!</string>
+    <string name="novaPassword">Nova Password</string>
+    <string name="etPeso">Peso (kg)</string>
+    <string name="etAltura">Altura (cm)</string>
+    <string name="btAtualizar">ATUALIZAR!</string>
+    <string-array name="tamanhos">
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+        <item>XXL</item>
+    </string-array>
+    <string-array name="distritos">
+        <item>Aveiro</item>
+        <item>Beja</item>
+        <item>Braga</item>
+        <item>Bragança</item>
+        <item>Castelo Branco</item>
+        <item>Coimbra</item>
+        <item>Évora</item>
+        <item>Faro</item>
+        <item>Guarda</item>
+        <item>Leiria</item>
+        <item>Lisboa</item>
+        <item>Portalegre</item>
+        <item>Porto</item>
+        <item>Santarém</item>
+        <item>Setúbal</item>
+        <item>Viana Do Castelo</item>
+        <item>Vila Real</item>
+        <item>Viseu</item>
+    </string-array>
+    <string name="nomePaís">Portugal</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="infiEnvio">Informações de envio</string>
+    <string name="sessão">Se pretende terminar sessão na sua conta SURFECT, clique no botão e volte mais tarde!
+        Se não, continue a disfrutar dos nossas cariados produtos e, quem sabe, comprá-los!</string>
+    <string name="metodoPagamento">Referência Multibanco</string>
 </resources>
