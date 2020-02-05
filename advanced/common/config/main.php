@@ -7,6 +7,16 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
 
     'components' => [
+        'modules' => [
+            'gridview' =>  [
+                'class' => '\kartik\grid\Module',
+            // your other grid module settings
+           ],
+           'gridviewKrajee' =>  [
+                'class' => '\kartik\grid\Module',
+            // your other grid module settings
+           ],
+       ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],

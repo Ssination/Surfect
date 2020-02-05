@@ -8,13 +8,21 @@ class HomeCest
 {
     public function checkHome(AcceptanceTester $I)
     {
-        $I->amOnPage(Url::toRoute('/site/index'));
-        $I->see('My Application');
+        $I->amOnPage(\yii\helpers\Url::toRoute(['/']));
+        //$I->seeLink('Entrar');
 
-        $I->seeLink('About');
-        $I->click('About');
+       // $I->seeLink('Registar');
+      //  $I->click('Entrar');
         $I->wait(2); // wait for page to be opened
-
-        $I->see('This is the About page.');
+        $I->see('Entrar');
+        $I->wait(2);
+        $I->click('Entrar');
+        $I->see('Login');
+        $I->fillField('#loginform-email','ruifmiguel@hotmail.com');
+        $I->wait(2);
+        $I->fillField('#loginform-password','123456');
+        $I->click('Entra');
+        $I->wait(10);
+        $I->see('Perfil');
     }
 }

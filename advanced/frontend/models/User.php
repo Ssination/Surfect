@@ -29,6 +29,7 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord
 {
+
     /**
      * {@inheritdoc}
      */
@@ -43,17 +44,24 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['auth_key', 'password_hash', 'email', 'created_at', 'updated_at', 'name', 'surname', 'birth_date', 'gender', 'phone_number'], 'required'],
+            [['auth_key', 'password_hash', 'created_at', 'updated_at'], 'required'],
             [['status', 'created_at', 'updated_at', 'height'], 'integer'],
             [['gender'], 'string'],
             [['weight'], 'number'],
             [['auth_key'], 'string', 'max' => 32],
+            ['name', 'required', 'message' => 'É obrigatório preencher o nome. '],
+            ['surname', 'required', 'message' => 'É obrigatório preencher o apelido. '],
+            ['birth_date', 'required', 'message' => 'É obrigatório preencher da data de nascimento. '],
+            ['gender', 'required', 'message' => 'É obrigatório preencher da data do género. '],
+            ['phone_number', 'required', 'message' => 'É obrigatório preencher da data do número de telemóvel. '],
+            ['email', 'required', 'message' => 'É obrigatório preencher o email. '],
             [['password_hash', 'password_reset_token', 'verification_token'], 'string', 'max' => 255],
             [['email'], 'string', 'max' => 50],
             [['name', 'surname'], 'string', 'max' => 65],
             [['birth_date'], 'string', 'max' => 10],
             [['phone_number'], 'string', 'max' => 11],
             [['email'], 'unique'],
+
         ];
     }
 

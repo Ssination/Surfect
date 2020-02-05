@@ -11,7 +11,15 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'modules' => [
+        'shop' => [
+            'class' => 'frontend\modules\shop\module',
+        ],
+    ],
     'components' => [
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+        ],
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
@@ -36,14 +44,21 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
+        /*'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
-        ],
-        */
+        ],*/
+
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@app/view' => '@frontend/themes/kongoon/views'
+                    ]
+            ]
+        ]
+        
     ],
     'params' => $params,
 ];

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\models\Categories;
 
 /**
  * This is the model class for table "products".
@@ -20,6 +21,7 @@ use Yii;
  */
 class Products extends \yii\db\ActiveRecord
 {
+    public $real;
     /**
      * {@inheritdoc}
      */
@@ -37,7 +39,8 @@ class Products extends \yii\db\ActiveRecord
             [['name', 'price', 'stock', 'description', 'discount', 'category_id'], 'required'],
             [['price'], 'number'],
             [['stock', 'discount', 'category_id'], 'integer'],
-            [['name', 'description'], 'string', 'max' => 65],
+            [['name'], 'string'],
+            [['description'], 'string'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['category_id' => 'category_id']],
         ];
     }
@@ -73,4 +76,12 @@ class Products extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Categories::className(), ['category_id' => 'category_id']);
     }
+    
+     /**
+     * @return \yii\db\ActiveQuery
+     */
+    /*public function getCategoria(){
+        return $this -> hasOne(Categories::className(), ['category_id' => 'category_id']);
+    }*/
+
 }

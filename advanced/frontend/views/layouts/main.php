@@ -27,35 +27,43 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
+
     <?php
+    $carrinho = Html::a('<img src="../web/img/carrinho2.png" height="50 !important"');
+
     NavBar::begin([
-        'brandLabel' => Yii::$app->name,
+        'brandLabel' => Html::img('../web/img/logo.png', ['alt'=>Yii::$app->name]),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
 
+
     if (Yii::$app->user->isGuest) {
 
         $menuItems = [
 
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Support', 'url' => ['/site/contact']],
-            ['label' => 'Login', 'url' => ['/site/login']],
-            ['label' => 'Signup', 'url' => ['/site/signup']],
+            ['label' => 'Inicio', 'url' => ['/site/index']],
+            /*['label' => 'Sobre', 'url' => ['/site/about']],
+            ['label' => 'Apoio', 'url' => ['/site/contact']],*/
+            ['label' => 'Entrar', 'url' => ['/site/login']],
+            ['label' => 'Registar', 'url' => ['/site/signup']],
+
         ];
     } else {
         $menuItems = [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Profile', 'url' => ['/user/view']],
-            ['label' => 'Support', 'url' => ['/site/contact']],
+            ['label' => 'Inicio', 'url' => ['/site/index']],
+            ['label' => 'Perfil', 'url' => ['/user/update']],
+            ['label' => 'Loja', 'url' => ['/store/index']],
+            ['label' => Html::img('../web/img/carrinho3.png', ['alt'=>Yii::$app->name, 'height'=>"21 !important"]), 'url' => ['/shop/cart/index']],
+            ['label' => 'Apoio', 'url' => ['/site/contact']],
+
         ];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->name . ')',
+                'Sair(' . Yii::$app->user->identity->name . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
@@ -64,6 +72,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
+        'encodeLabels' => false,
     ]);
     NavBar::end();
     ?>
@@ -79,7 +88,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+        <p class="pull-left">&copy; <?= Html::encode('Surfect') ?> <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

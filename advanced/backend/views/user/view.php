@@ -25,7 +25,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-
+        <?= Html::a('Activate', ['activate', 'id' => $model->email], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to activate this user?',
+                'method' => 'post',
+            ],
+        ]) ?>
     </p>
 
     <?= DetailView::widget([
@@ -40,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'gender',
             'phone_number',
             'height',
-            'weight',
+            'weight',                 
         ],
     ]) ?>
 

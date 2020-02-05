@@ -39,10 +39,10 @@ class UserSearch extends User
      *
      * @return ActiveDataProvider
      */
+  
     public function search($params)
     {
         $query = User::find();
-
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -77,6 +77,7 @@ class UserSearch extends User
             ->andFilterWhere(['like', 'birth_date', $this->birth_date])
             ->andFilterWhere(['like', 'surname', $this->surname])
             ->andFilterWhere(['like', 'gender', $this->gender]);
+            
 
         return $dataProvider;
     }

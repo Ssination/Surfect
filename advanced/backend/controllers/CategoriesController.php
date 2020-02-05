@@ -3,13 +3,15 @@
 namespace backend\controllers;
 
 use Yii;
+use app\models\Categories;
 use backend\models\CategoriesShow;
 use backend\models\CategoriesShowSearch;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-
+use  yii\web\Session;
+use yii\helpers\Html;
 /**
  * CategoriesController implements the CRUD actions for CategoriesShow model.
  */
@@ -129,9 +131,22 @@ class CategoriesController extends Controller
     public function actionDelete($id)
     {
         if (Yii::$app->user->can('admin')) {
-            $this->findModel($id)->delete();
+            $model = $this->findModel($id);
+            $produtos = $model->products;
+            if($produtos != null)
+            {
+        
+                echo 'categoria associada';
+               //Yii::$app->user->setFlash('erro', "Data1 saved!");// Yii::$app->session->setFlash('erro', "Categoria tem produtos associados.");
+               // return $this->redirect(['index']);
+            }
+            else
+            {
+                $model->delete();
 
-            return $this->redirect(['index']);
+                return $this->redirect(['index']);
+            }
+           
         }
         else
         {
@@ -148,7 +163,7 @@ class CategoriesController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = CategoriesShow::findOne($id)) !== null) {
+        if (($model = Categories::findOne($id)) !== null) {
             return $model;
         }
 

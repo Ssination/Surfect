@@ -10,6 +10,7 @@ use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\ArrayHelper;
+use yii\web\UploadedFile;
 /**
  * ProductController implements the CRUD actions for Products model.
  */
@@ -81,6 +82,18 @@ class ProductController extends Controller
             $model = new Products();
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                $model->save();
+                $productId=$model->product_id;
+                $image=UploadedFile::getInstance($model,'photo');
+                if(!$image==null){
+                $imgTag='prd_'.$productId.'.'.$image->getExtension();
+                $image->saveAs(Yii::getAlias('@productsPath').'/'.$imgTag);
+                $model->photo=$imgTag;
+                $model->save();
+            }
+                else{
+
+                }
                 return $this->redirect(['view', 'id' => $model->product_id]);
             }
 
@@ -107,6 +120,18 @@ class ProductController extends Controller
             $model = $this->findModel($id);
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                $model->save();
+                $productId=$model->product_id;
+                $image=UploadedFile::getInstance($model,'photo');
+                if(!$image==null){
+                    $imgTag='prd_'.$productId.'.'.$image->getExtension();
+                    $image->saveAs(Yii::getAlias('@productsPath').'/'.$imgTag);
+                    $model->photo=$imgTag;
+                    $model->save();
+                }
+                    else{
+                    }
+            
                 return $this->redirect(['view', 'id' => $model->product_id]);
             }
 

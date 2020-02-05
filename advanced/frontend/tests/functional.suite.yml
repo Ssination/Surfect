@@ -2,5 +2,11 @@ suite_namespace: frontend\tests\functional
 actor: FunctionalTester
 modules:
     enabled:
+        - Db:
+             dsn: 'mysql:host=localhost;dbname=db_surfect_tests'
+             user: 'root'
+             password: ''
+             cleanup: false
         - Filesystem
         - Yii2
+        

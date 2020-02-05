@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'purchase_date') ?>
 
-    <?= $form->field($model, 'adress_id') ?>
+    <?= $form->field($model, 'address_id') ?>
 
     <?= $form->field($model, 'email') ?>
 

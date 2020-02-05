@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'purchase_id',
             'purchase_date',
-            //'adress_id',
+            //'address_id',
             'email:email',
             'payment_id',
         ],

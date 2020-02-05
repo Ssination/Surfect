@@ -1,0 +1,14 @@
+suite_namespace: frontend\tests\acceptance
+actor: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: 'http://localhost/advanced/frontend/web'
+            window_size: false # disabled in ChromeDriver
+            port: 5000
+            browser: chrome
+            capabilities:
+                "goog:chromeOptions": # additional chrome options
+        - Yii2:
+            part: init
+            cleanup: false

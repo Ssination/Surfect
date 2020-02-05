@@ -41,8 +41,8 @@ class ProductSearch extends Products
      */
     public function search($params)
     {
-        $query = Products::find();
-
+        $query = Products::find()
+        ->select(['{{products}}.*', '([[price]] - ([[price]] * [[discount]]) / 100)  AS real']);
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -67,8 +67,8 @@ class ProductSearch extends Products
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description]);
-
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'price',$this->price - ($this->price * $this->discount)]);
         return $dataProvider;
     }
 }

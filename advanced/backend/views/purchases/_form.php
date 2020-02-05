@@ -26,11 +26,11 @@ use dosamigos\datepicker\DatePicker;
     <?= $form->field($model, 'payment_id')->dropDownList($listData,['prompt'=>'']) ?>
 
     <?php
-    $purchase_adress = \app\models\Purchases::find()->all();
-    $listData=ArrayHelper::map($purchase_adress,'adress_id','adress_id');
+    $purchase_address = \app\models\Purchases::find()->all();
+    $listData=ArrayHelper::map($purchase_address,'address_id','address_id');
     ?>
 
-    <?= $form->field($model, 'adress_id')->dropDownList($listData,['prompt'=>'']) ?>
+    <?= $form->field($model, 'address_id')->dropDownList($listData,['prompt'=>'']) ?>
 
     <?= $form->field($model, 'purchase_date')->widget(
         DatePicker::className(), [

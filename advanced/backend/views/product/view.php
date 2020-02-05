@@ -34,8 +34,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'price',
             'stock',
             'description',
+            [
+                'attriute'=>'photo',
+                'value'=> Yii::getAlias('@productsUrl').'/'.$model->photo,
+                'label'=> 'Imagem',
+                'format'=>['image',['width'=>'100','height'=>'100']]
+            ],
             'discount',
+            [
+                'attribute' => 'pvp',
+                'value' => ($model->price - ($model->price * $model->discount) / 100),
+            ],
             'category_id',
+            array(
+                'attribute' => 'category.name',
+                'label' => 'Category'
+            ),                      
         ],
     ]) ?>
 

@@ -121,10 +121,16 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+                $message = Yii::$app->mailer->compose();
+            $message->setFrom(Yii::$app->user->identity->email);
+            $message->setTo(Yii::$app->params['adminEmail'])
+                ->setSubject('Message subject')
+                ->setTextBody('Plain text content')
+                ->send();
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
+                Yii::$app->session->setFlash('success', 'Obrigado por nos contactar, entraremos em contacto consigo brevemente.');
             } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
+                Yii::$app->session->setFlash('error', 'Houve um erro na submição do pedido.');
             }
 
             return $this->refresh();
@@ -135,6 +141,7 @@ class SiteController extends Controller
         }
     }
 
+
     /**
      * Displays about page.
      *
@@ -143,6 +150,10 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    public function actionStore()
+    {
+        return $this->render('store');
     }
 
     /**
@@ -154,7 +165,7 @@ class SiteController extends Controller
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            Yii::$app->session->setFlash('success', 'Obrigado por se registar.');
             return $this->goHome();
         }
 

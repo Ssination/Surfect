@@ -9,12 +9,12 @@ use Yii;
  *
  * @property int $purchase_id
  * @property string $purchase_date
- * @property int $adress_id
+ * @property int $address_id
  * @property string $email
  * @property int $payment_id
  *
  * @property PurchaseDetails[] $purchaseDetails
- * @property Adresses $adress
+ * @property Addresses $address
  * @property User $email0
  * @property Payments $payment
  */
@@ -34,11 +34,11 @@ class Purchases extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-           [['purchase_date', 'adress_id', 'email', 'payment_id'], 'required'],
+           [['purchase_date', 'address_id', 'email', 'payment_id'], 'required'],
             [['purchase_date'], 'safe'],
-            [['adress_id', 'payment_id'], 'integer'],
+            [['address_id', 'payment_id'], 'integer'],
             [['email'], 'string', 'max' => 65],
-            [['adress_id'], 'exist', 'skipOnError' => true, 'targetClass' => Adresses::className(), 'targetAttribute' => ['adress_id' => 'adress_id']],
+            [['address_id'], 'exist', 'skipOnError' => true, 'targetClass' => Addresses::className(), 'targetAttribute' => ['address_id' => 'address_id']],
             [['email'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['email' => 'email']],
             [['payment_id'], 'exist', 'skipOnError' => true, 'targetClass' => Payments::className(), 'targetAttribute' => ['payment_id' => 'payment_id']],
         ];
@@ -52,7 +52,7 @@ class Purchases extends \yii\db\ActiveRecord
         return [
             'purchase_id' => 'Purchase ID',
             'purchase_date' => 'Purchase Date',
-            'adress_id' => 'Adress ID',
+            'address_id' => 'Address ID',
             'email' => 'Email',
             'payment_id' => 'Payment ID',
         ];
@@ -69,9 +69,9 @@ class Purchases extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAdress()
+    public function getAddress()
     {
-        return $this->hasOne(Adresses::className(), ['adress_id' => 'adress_id']);
+        return $this->hasOne(Addresses::className(), ['address_id' => 'address_id']);
     }
 
     /**

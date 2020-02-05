@@ -2,6 +2,12 @@ suite_namespace: frontend\tests\unit
 actor: UnitTester
 modules:
     enabled:
+        - Db:
+             dsn: 'mysql:host=localhost;dbname=db_surfect_tests'
+             user: 'root'
+             password: ''
+             cleanup: false
         - Yii2:
             part: [orm, email, fixtures]
+            cleanup: false
         - Asserts

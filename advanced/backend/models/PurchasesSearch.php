@@ -17,7 +17,7 @@ class PurchasesSearch extends Purchases
     public function rules()
     {
         return [
-            [['purchase_id', 'adress_id', 'payment_id'], 'integer'],
+            [['purchase_id', 'address_id', 'payment_id'], 'integer'],
             [['purchase_date', 'email'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class PurchasesSearch extends Purchases
         $query->andFilterWhere([
             'purchase_id' => $this->purchase_id,
             'purchase_date' => $this->purchase_date,
-            'adress_id' => $this->adress_id,
+            'address_id' => $this->address_id,
             'payment_id' => $this->payment_id,
         ]);
 

@@ -11,7 +11,17 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    // in your module configuration you can have 'gridviewKrajee' as another module
+    'modules' => [
+         'gridview' =>  [
+             'class' => '\kartik\grid\Module',
+         // your other grid module settings
+        ],
+        'gridviewKrajee' =>  [
+             'class' => '\kartik\grid\Module',
+         // your other grid module settings
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
@@ -36,21 +46,20 @@ return [
         ],
             'authManager'=>[
                 'class'=>'yii\rbac\DbManager',
-                'defaultRoles'=>['guest',
-                    ]
+                'defaultRoles'=>['guest'],
             ],
-
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
+
+   /*     'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
+   */
+
     ],
     'params' => $params,
 ];

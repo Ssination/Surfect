@@ -1,7 +1,7 @@
 <?php
-
+use kartik\grid\GridView;
 use yii\helpers\Html;
-use yii\grid\GridView;
+//se yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UserSearch */
@@ -9,6 +9,7 @@ use yii\widgets\Pjax;
 
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
 <div class="user-index">
 
@@ -17,20 +18,66 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+ 
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+          'filterModel' => $searchModel,
+        
+       'dataProvider' => $dataProvider,
+       'bordered' => true,
+   'striped' => false,
+   'condensed' =>true ,
+   'responsive' =>true,
+   'hover' => true,
+   'showPageSummary' => false,
+
+   'panel' => [
+       'type' => GridView::TYPE_PRIMARY,
+       'heading' => true,
+   ],
+   'persistResize' => false,
+   'toggleDataOptions' => ['minCount' => 10],
+   'exportConfig' => true,
+   'itemLabelSingle' => 'product',
+   'itemLabelPlural' => 'products',
+        'toolbar' =>  [
+            [
+                'content' =>
+                   
+                    Html::a('<i class="fas fa-redo"></i>', ['grid-demo'], [
+                        'class' => 'btn btn-outline-secondary',
+                       // 'title'=>Yii::t('kvgrid', 'Reset Grid'),
+                        'data-pjax' => 0, 
+                    ]), 
+                'options' => ['class' => 'btn-group mr-2']
+            ],
+            '{export}',
+            '{toggleData}',
+        ],
+        'toggleDataContainer' => ['class' => 'btn-group mr-2'],
+        // set export properties
+        'export' => [
+            'fontAwesome' => true
+        ],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-
-
-
-            'email:email',
+           
+            [
+                'class' => 'kartik\grid\ExpandRowColumn',
+                'width' => '50px',
+                'value' => function ($model, $key, $index, $column) {
+                    return GridView::ROW_COLLAPSED;
+                },
+                // uncomment below and comment detail if you need to render via ajax
+                // 'detailUrl'=>Url::to(['/site/book-details']),
+                'detail' => function ($model, $key, $index, $column) {
+                    return Yii::$app->controller->renderPartial('view', ['model' => $model]);
+                },
+                'headerOptions' => ['class' => 'kartik-sheet-style'] ,
+                'expandOneOnly' => true
+            ],
+       'email:email',
             'status',
             //'created_at',
             //'updated_at',
@@ -42,11 +89,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'phone_number',
             //'height',
             //'weight',
-
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]); ?>
-
+       // ['class' => 'kartik\grid\ActionColumn'],
+       ],
+       ]);?>
     <?php Pjax::end(); ?>
 
 </div>
